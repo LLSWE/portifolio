@@ -79,7 +79,7 @@ section .data
         socketaddr: 
             dw 2 
             dw 0x901F
-            db 127, 0, 0, 1 
+            db 0, 0, 0, 0 ; prod, local 127.0.0.1
             dq 0 
         header: db "HTTP/1.1 200 OK", 13, 10, "Content-Type: text/html", 13, 10, 13, 10
         headerlen: equ $ - header
