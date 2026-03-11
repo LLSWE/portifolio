@@ -3,15 +3,15 @@ FROM ubuntu:22.04 AS builder
 RUN apt-get update && apt-get install -y nasm binutils
 
 WORKDIR /app
-COPY main.asm .
+COPY server.asm .
 COPY index.html .
 
-RUN nasm -f elf64 main.asm -o main.o
-RUN ld main.o -o main
+RUN nasm -f elf64 server.asm -o server.o
+RUN ld server.o -o server
 
 FROM scratch
 
-COPY --from=builder /app/main .
+COPY --from=builder /app/server .
 COPY --from=builder /app/index.html .
 
 EXPOSE 8080
