@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS builder
+FROM debian:bookworm-slim AS builder
 
 RUN apt-get update && apt-get install -y nasm binutils
 
@@ -10,7 +10,7 @@ RUN nasm -f elf64 server.asm -o server.o
 RUN ld server.o -o server
 
 # FROM scratch
-FROM alpine:latest
+FROM debian:bookworm-slim 
 
 WORKDIR /app
 COPY --from=builder /app/server .
