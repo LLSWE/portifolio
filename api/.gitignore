@@ -1,0 +1,4 @@
+# assembled / linked outputs 
+*.out 
+*.o 
+
