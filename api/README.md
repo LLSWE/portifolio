@@ -24,8 +24,8 @@ Transformar o object file em um output executável
 
 
 ### Documentação para execução do projeto 
-[Tabela para system calls](https://filippo.io/linux-syscall-table/)
-[Registradores](https://math.hws.edu/eck/cs220/f22/registers.html)
-[Documentação Nasm](https://www.nasm.us/docs.html)
-[Linux Man Pages](https://man7.org/linux/man-pages/)
-[Tabela pra conversão em hex](https://www.rapidtables.com/convert/number/decimal-to-hex.html?x=8080)
+- [Tabela para system calls](https://filippo.io/linux-syscall-table/)
+- [Registradores](https://math.hws.edu/eck/cs220/f22/registers.html)
+- [Documentação Nasm](https://www.nasm.us/docs.html)
+- [Linux Man Pages](https://man7.org/linux/man-pages/)
+- [Tabela pra conversão em hex](https://www.rapidtables.com/convert/number/decimal-to-hex.html?x=8080)
