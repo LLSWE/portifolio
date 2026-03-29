@@ -5,11 +5,10 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Luis Lima</title>
-		<link href="./index.css" rel="stylesheet">
 	</head>
 
 	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&display=swap');
 		
 		*,
 		*::before,
@@ -19,131 +18,257 @@
 			padding: 0;
 		}
 		
-		body.main {
-			background: #202020;
-			color: #aaaaaa;
+		:root {
+			--bg: #181818;
+			--surface: #1e1e1e;
+			--border: #272727;
+			--text-dim: #555555;
+			--text-body: #8a8a8a;
+			--text-mid: #aaaaaa;
+			--text-bright: #d8d8d8;
+			--accent: #c8b89a;
+			--accent-dim: #5a5040;
+		}
+		
+		html {
+			scroll-behavior: smooth;
+		}
+		
+		body {
+			background: var(--bg);
+			color: var(--text-body);
 			font-family: 'Geist Mono', monospace;
 			font-weight: 300;
-			font-size: 0.88rem;
-			line-height: 1.85;
-			max-width: 620px;
+			font-size: 0.875rem;
+			line-height: 1.9;
+			min-height: 100vh;
+		}
+		
+		/* Left rail line */
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 1px;
+			background: linear-gradient(to bottom, transparent, var(--border) 15%, var(--border) 85%, transparent);
+			pointer-events: none;
+		}
+		
+		.container {
+			max-width: 640px;
 			margin: 0 auto;
-			padding: 5rem 1.5rem 8rem;
+			padding: 5rem 2rem 10rem;
 		}
 		
+		/* ── Sections ── */
 		section {
-			margin-bottom: 3.5rem;
+			margin-bottom: 4rem;
+			position: relative;
 		}
 		
-		b {
-			font-size: 1.4rem;
-			font-weight: 400;
-			color: #dddddd;
+		/* ── Name / Hero ── */
+		.hero-name {
+			font-size: 1.45rem;
+			font-weight: 500;
+			color: var(--text-bright);
+			letter-spacing: -0.01em;
 			display: block;
-			margin-bottom: 1.2rem;
+			margin-bottom: 0.2rem;
 		}
 		
-		h3 {
-			font-size: 0.75rem;
+		.hero-role {
+			font-size: 0.72rem;
 			font-weight: 400;
-			color: #555555;
+			color: var(--accent);
 			text-transform: uppercase;
-			letter-spacing: 0.12em;
-			margin-bottom: 1rem;
+			letter-spacing: 0.18em;
+			display: block;
+			margin-bottom: 1.6rem;
 		}
 		
+		/* ── Section labels ── */
+		h3 {
+			font-size: 0.68rem;
+			font-weight: 400;
+			color: var(--text-dim);
+			text-transform: uppercase;
+			letter-spacing: 0.16em;
+			margin-bottom: 1.2rem;
+			display: flex;
+			align-items: center;
+			gap: 0.8rem;
+		}
+		
+		h3::after {
+			content: '';
+			flex: 1;
+			height: 1px;
+			background: var(--border);
+		}
+		
+		/* ── Body text ── */
 		p {
+			color: var(--text-body);
 			margin-bottom: 1rem;
-			color: #999999;
 		}
 		
 		p:last-child {
 			margin-bottom: 0;
 		}
 		
+		/* ── Italic pull quote ── */
 		i {
-			color: #666666;
+			color: var(--accent);
 			font-style: italic;
+			font-size: 0.82rem;
 			display: block;
-			margin: 0.8rem 0 1rem;
+			margin: 1rem 0 1.2rem;
+			padding-left: 0.8rem;
+			border-left: 1px solid var(--accent-dim);
 		}
 		
+		/* ── Divider ── */
 		hr {
 			border: none;
-			border-top: 1px solid #2e2e2e;
-			margin: 1.5rem 0;
+			border-top: 1px solid var(--border);
+			margin: 1.6rem 0;
 		}
 		
-		br {
-			display: none;
+		/* ── Links ── */
+		a {
+			color: var(--accent);
+			text-decoration: none;
+			border-bottom: 1px solid var(--accent-dim);
+			padding-bottom: 1px;
+			transition: color 0.15s, border-color 0.15s;
+		}
+		
+		a:hover {
+			color: var(--text-bright);
+			border-color: var(--text-bright);
+		}
+		
+		/* ── Subtle cursor blink on hero ── */
+		.cursor {
+			display: inline-block;
+			width: 2px;
+			height: 1.1em;
+			background: var(--accent);
+			vertical-align: text-bottom;
+			margin-left: 2px;
+			animation: blink 1.1s step-end infinite;
+		}
+		
+		@keyframes blink {
+			0%, 100% { opacity: 1; }
+			50%       { opacity: 0; }
+		}
+		
+		/* ── Stack tags ── */
+		.tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.4rem;
+			margin-top: 1rem;
+		}
+		
+		.tag {
+			font-size: 0.68rem;
+			padding: 0.2rem 0.55rem;
+			border: 1px solid var(--border);
+			color: var(--text-dim);
+			letter-spacing: 0.06em;
+			border-radius: 2px;
+			transition: border-color 0.15s, color 0.15s;
+		}
+		
+		.tag:hover {
+			border-color: var(--accent-dim);
+			color: var(--accent);
+		}
+		
+		.tag.highlight {
+			border-color: var(--accent-dim);
+			color: var(--accent);
 		}
 	</style>
 
-	<body class="main">
-		<section>
-			<div><b>LL Software Engineer</b></div>
-			<p>
-				Im an backend engineer, husband, and proud father of 6 cockatiels and 4 dogs <br>
-			</p>
-			<i>But where it all begins ...</i>
-			<p>Like many of us, i was also a fat kid playing video games all day <br>
-				Born in São Sebastião, DF , i always considered myself privileged by my parental figures. My father <br>
-				; an always hardworking and humorous man ; taught me discipline and hardwork can take you very far, while also
-				<br>
-				showing that life is fun, and you have a reason to smile and laugh everyday. <br>
-				My mother; an strong and protective woman; taught me you gotta be tough and protect the ones you love, in every
-				sense, physically <br>
-				and emotionally <br>
-				These are my greatest references and reason why i can be who I am today</p>
-		</section>
-		<section>
-			<h3>Why backend ?</h3>
-			<p>
-				I would never consider myself to be an talented drawer, painter or have any proficiency at all in artistic manner
-				<br>
-				As a kid, i was completely fascinated with physics, mainly astrophysics. The thought of discovering something new
-				<br>
-				made my eyes glow, and i proudly affirm that in any parallel universe I would've followed carrer in some science
-				related area
-			</p>
-			<hr>
-			<p>
-				Thus my lack of talented for aesthetic beauty and my ever so growing thirst for discovery led me to where Im now
-				<br>
-				There's something about building, the passion it takes to go through the system, refining, optimizing, refactoring
-				<br>
-			</p>
-		</section>
-		<section>
-			<h3>My carrer in tech</h3>
-			<p>
-				It might be a surprise but i didn't start in software development, my first job was in IT support <br>
-				fixing computers and phones, left it for an internship were I was also in IT support, but it gave me the
-				oportunity <br>
-				to develop software, It was an huge deal, back in the day i had left my job for an internship that paid half of
-				the salary <br>
-				Could seem crazy, but in my mind it was worth it for getting the oportunity to build software for an company <br>
-				Months later that was already proven to be the greatest decision of my early carrer, the chase for bigger
-				challenges, <br>
-				the ambition to always chase being better are some of my greatest feats
-			</p>
-			<p>Some time and many adventures after, I find myself being an completely different engineer, always pushing myself
-				to be better, as Software development is always growing in content and knowlegde to gather</p>
-		</section>
-		<section>
-			<h3>Tech Stack</h3>
-			<p>
-				I've studied and worked with many different languages and paradigms, <br>
-				was never afraid to learn new technologies, from minimilistic procedural langs like C and Go <br>
-				, enterprise OOPs like Java and C# and my favorite functional langs, like Rust or Ocaml
-			</p>
-			<p>Im especially fund of the low level, the skill expression and complexity in languages <br>
-				with lower level capacities, my favorite language is Rust, Im usually one of the many <br>
-				advocates of rewriting everything in Rust. But all the other langs with low level capacities<br>
-				are also really fun and interesting to code</p>
-			<p>In fact, this portifolio is made using Assembly x86_64, check <a href="https://github.com/LLSWE/portifolio">github repo</a></p>
-			<p>I would say that im pretty agnostic language wise, I do have my preferences in lower level languages for the skill expression
-				they permit, but I was always a fast learner so I wouldn't limit myself too the ones I mentioned here</p>
-		</section>
+	<body>
+		<div class="container">
+
+			<section>
+				<span class="hero-name">Luis Lima <span class="cursor"></span></span>
+				<span class="hero-role">Backend Engineer</span>
+				<p>
+					Im an backend engineer, husband, and proud father of 6 cockatiels and 4 dogs
+				</p>
+				<i>But where it all begins ...</i>
+				<p>Like many of us, i was also a fat kid playing video games all day
+					Born in São Sebastião, DF, i always considered myself privileged by my parental figures. My father
+					— an always hardworking and humorous man — taught me discipline and hardwork can take you very far, while also
+					showing that life is fun, and you have a reason to smile and laugh everyday.
+					My mother — an strong and protective woman — taught me you gotta be tough and protect the ones you love, in every
+					sense, physically and emotionally.
+					These are my greatest references and reason why i can be who I am today.</p>
+			</section>
+
+			<section>
+				<h3>Why backend ?</h3>
+				<p>
+					I would never consider myself to be an talented drawer, painter or have any proficiency at all in artistic manner.
+					As a kid, i was completely fascinated with physics, mainly astrophysics. The thought of discovering something new
+					made my eyes glow, and i proudly affirm that in any parallel universe I would've followed a carrer in some science
+					related area.
+				</p>
+				<hr>
+				<p>
+					Thus my lack of talented for aesthetic beauty and my ever so growing thirst for discovery led me to where Im now.
+					There's something about building, the passion it takes to go through the system, refining, optimizing, refactoring.
+				</p>
+			</section>
+
+			<section>
+				<h3>My carrer in tech</h3>
+				<p>
+					It might be a surprise but i didn't start in software development, my first job was in IT support —
+					fixing computers and phones, left it for an internship were I was also in IT support, but it gave me the
+					oportunity to develop software. It was an huge deal, back in the day i had left my job for an internship that paid half of
+					the salary. Could seem crazy, but in my mind it was worth it for getting the oportunity to build software for an company.
+					Months later that was already proven to be the greatest decision of my early carrer, the chase for bigger
+					challenges, the ambition to always chase being better are some of my greatest feats.
+				</p>
+				<p>Some time and many adventures after, I find myself being an completely different engineer, always pushing myself
+					to be better, as Software development is always growing in content and knowlegde to gather.</p>
+			</section>
+
+			<section>
+				<h3>Tech Stack</h3>
+				<p>
+					I've studied and worked with many different languages and paradigms,
+					was never afraid to learn new technologies, from minimilistic procedural langs like C and Go,
+					enterprise OOPs like Java and C# and my favorite functional langs, like Rust or Ocaml.
+				</p>
+				<p>Im especially fund of the low level, the skill expression and complexity in languages
+					with lower level capacities. My favorite language is Rust, Im usually one of the many
+					advocates of rewriting everything in Rust. But all the other langs with low level capacities
+					are also really fun and interesting to code.</p>
+				<p>In fact, this portifolio is made using Assembly x86_64, check <a href="https://github.com/LLSWE/portifolio">github repo</a>.</p>
+				<p>I would say that im pretty agnostic language wise. I do have my preferences in lower level languages for the skill expression
+					they permit, but I was always a fast learner so I wouldn't limit myself to the ones I mentioned here.</p>
+
+				<div class="tags">
+					<span class="tag">Rust</span>
+					<span class="tag">Assembly x86_64</span>
+					<span class="tag">Go</span>
+					<span class="tag">C</span>
+					<span class="tag">OCaml</span>
+					<span class="tag">Java</span>
+					<span class="tag">C#</span>
+					<span class="tag">Node.js</span>
+				</div>
+			</section>
+		</div>
 	</body>
 </html>
