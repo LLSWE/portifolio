@@ -12,14 +12,17 @@
 ### Como Rodar:
 Tranformar o arquivo de assembly em object file 
 ```nasm -f elf64 main.asm -o main.o ```
-
 Transformar o object file em um output executável 
 ```
 ```
 ```
 ```
 ```
-``` ld main.o 
+```
+```ld main.o ```
+```
+```
+```
 ```
 
 
