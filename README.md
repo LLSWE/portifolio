@@ -11,10 +11,14 @@
 
 ### Como Rodar:
 Tranformar o arquivo de assembly em object file 
+```
+```
+``
 **nasm -f elf64 server.asm -o server.o**
+``
 Transformar o object file em um output executável 
 **ld server.o**
-```
+
 ### Documentação para execução do projeto 
 - [Tabela para system calls](https://filippo.io/linux-syscall-table/)
 - [Registradores](https://math.hws.edu/eck/cs220/f22/registers.html)
